@@ -21,7 +21,8 @@ jobs:
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.AWS_USER }}@${{ secrets.AWS_HOST }} << 'EOF'
           cd /home/ubuntu/ai_webpage
-          sudo chown -R $USER:$USER .git
+          sudo chown -R $USER:$USER .
+          sudo chmod -R 755 .
           git config --global --add safe.directory /home/ubuntu/ai_webpage
           git pull origin main
         EOF
